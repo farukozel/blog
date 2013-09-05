@@ -1,15 +1,16 @@
 <?php include ("includes/connection.php");?>
 
 <?php
+//Oturum kodlarý Baþlangýç
 	session_start();
 	ob_start();
 	ob_end_flush();
 	if(!isset($_SESSION["giris"])){
-		echo "Bu sayfayý Görüntüleyemezsiniz..!";
+		echo "Bu sayfayý Görüntüleyemezsiniz..!<br>";
 		echo "<a href=index.php>Geri dön</a>";
 	}else{
+//Oturum kodlarý bitiþ
 	$icerik = $_GET["a"];
-
 ?>
 <?php include ("includes/header.php");?>
 		<div id="orta">
@@ -118,6 +119,8 @@
 							}
 							echo "</table>";
 						}elseif($icerik == "makale_ekle"){
+						//Ýçerik Sayfasý Makale Ekleme Formu
+						
 							/*<div width="50px" height="50px" color="blue"> vdfvfdvfbvfg</div>
 							<div class=makaleekle>
 								<form align="center" name="kullanici" action="giris.php"  method="post">
@@ -145,10 +148,12 @@
 				<div class="makale">Yönetim
 					<ul>
 						<?php 
+						//Yönetim Paneli Baþlangýç
 							echo "<a href=\"admin.php?a=kullanici\">".Kullanýcýlar."</a><br>";
 							echo "<a href=\"admin.php?a=makale\">".Makaleler."</a><br>";
 							echo "<a href=\"admin.php?a=kategori\">".Kategoriler."</a><br>";
 							echo "<a href=\"admin.php?a=sayfa\">".Sayfalar."</a><br>";
+						//Yönetim Paneli Bitiþ
 						?>
 					</ul>
 				</div>
@@ -156,6 +161,7 @@
 				Makaleler 
 					<ul>
 						<?php
+						//Makaleler Paneli
 							echo "<a href=\"admin.php?a=makale_ekle\">"."Yeni Makale Ekle"."</a><br>";
 						?>
 					</ul>

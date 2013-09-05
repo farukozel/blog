@@ -1,5 +1,6 @@
 <?php include ("includes/connection.php");
-session_start();
+echo "merhaba"
+	session_start();
 	$giris = mysql_query ("SELECT * FROM kullanicilar",$connection);
 	if(!$giris){
 		die ("Veritabaný Sorgu Hatasý: ".mysql_error());

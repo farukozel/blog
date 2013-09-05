@@ -7,7 +7,7 @@
 						</tr>
 						<tr>
 							<td>
-								<form align="center" name="kullanici" action="giris.php"  method="post">
+								<form align="center" name="kullanici" action="giris.php"  method="POST">
 								<p>
 									<input style="width:150px; font-size:22" type="text"  name="ad" value="Kullanýcý Adý" onclick="this.value='';" />
 								</p>

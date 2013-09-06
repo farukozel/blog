@@ -1,17 +1,11 @@
-<?php include ("includes/connection.php");?>
-
 <?php
-//Oturum kodlarý Baþlangýç
 	session_start();
-	ob_start();
-	ob_end_flush();
 	if(!isset($_SESSION["giris"])){
-		echo "Bu sayfayý Görüntüleyemezsiniz..!<br>";
-		echo "<a href=index.php>Geri dön</a>";
-	}else{
-//Oturum kodlarý bitiþ
-	$icerik = $_GET["a"];
+		header("Location:http://blog.farukozel.net/index.php");
+	}
 ?>
+<?php include ("includes/connection.php");?>
+<?php $icerik = $_GET["a"];?>
 <?php include ("includes/header.php");?>
 		<div id="orta">
 			<div class="leftbar">
@@ -20,7 +14,6 @@
 				</div>
 				<div class="icerik">
 					<?php
-					
 						if($icerik == "kullanici"){
 							//Ýçerik Sayfasý Kullanýcý Tablosu
 							$kullanici = mysql_query ("SELECT * FROM kullanicilar",$connection);
@@ -118,27 +111,41 @@
 								echo "</tr>";
 							}
 							echo "</table>";
+//-------------------------------------------------------------------------------------------------------------------------------------------------------
 						}elseif($icerik == "makale_ekle"){
-						//Ýçerik Sayfasý Makale Ekleme Formu
-						
-							/*<div width="50px" height="50px" color="blue"> vdfvfdvfbvfg</div>
-							<div class=makaleekle>
-								<form align="center" name="kullanici" action="giris.php"  method="post">
-								<p>
-									<input style="width:150px; font-size:22" type="text"  name="ad" value="Kullanýcý Adý" onclick="this.value='';" />
-								</p>
-								<p>
-									<input style="width:150px; font-size:22" type="password" name="sifre" value="Parola" onclick="this.value='';" />
-								</p>
-								<p>
-									<input type="submit" value="Giriþ" id="submit" />
-								</p>
-								</form>
-							</div>*/
-							echo "Daha bitirilmedi........!";
-						 } 	
-//---------------------------------------------------------------------------------------------------------------------------------------------------------?>
-															
+							//Makale Ekleme Sayfasýnýn Oluþturulmasý
+							echo" 	<div class=makale_eklesol>  
+										<div class=makaleadi> Makale Adý </div>
+										<div class=kategoriadi> kategori </div>
+										<div class=icerikadi> Ýçerik </div>
+									</div>
+									<div class=makale_eklesag>
+											<form action=includes/makale_ekle.php id=usrform method=POST>
+												<input class=makaleform1 type=text  name=makale_ad value=MakaleAdýnýGiriniz.. onclick=this.value=''; >";
+														
+													echo"<select name=kategori_sec class=option>";
+													echo"<option value=Seçiniz.. selected> Seçiniz..</option>";
+														$kategori = mysql_query ("SELECT * FROM kategori",$connection);
+														if(!$kategori){
+															die("Veritabaný Sorgu Hatasý: ".mysql_error());
+														}
+														while ($row2 = mysql_fetch_array($kategori)) {
+															echo "<option value=\"".$row2["kategori_ad"]."\">".$row2["kategori_ad"]."</option>";
+														}
+								echo"					</select>";
+								echo"			</input>";
+								echo"		</form>";
+								echo"		<textarea class=textarea rows=15 cols=73 name=makale_icerik onclick=this.value='' form=usrform> Makale Ýçeriðini Giriniz...</textarea>";
+								echo"		<input class=makale_buton type=submit form=usrform value=Kaydet />";
+																				
+								echo "</div>";
+								
+						} elseif($icerik == "hosgeldiniz"){
+							//Karþýlama Ekraný
+							echo "<h1>Hoþgeldiniz</h1>";
+						}	
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+					?>										
 				</div>
 			</div>
 			<div class="rightbar">
@@ -148,12 +155,10 @@
 				<div class="makale">Yönetim
 					<ul>
 						<?php 
-						//Yönetim Paneli Baþlangýç
 							echo "<a href=\"admin.php?a=kullanici\">".Kullanýcýlar."</a><br>";
 							echo "<a href=\"admin.php?a=makale\">".Makaleler."</a><br>";
 							echo "<a href=\"admin.php?a=kategori\">".Kategoriler."</a><br>";
 							echo "<a href=\"admin.php?a=sayfa\">".Sayfalar."</a><br>";
-						//Yönetim Paneli Bitiþ
 						?>
 					</ul>
 				</div>
@@ -161,12 +166,12 @@
 				Makaleler 
 					<ul>
 						<?php
-						//Makaleler Paneli
 							echo "<a href=\"admin.php?a=makale_ekle\">"."Yeni Makale Ekle"."</a><br>";
+							echo "<a href=\"admin.php?a=kullanici_ekle\">"."Yeni Kullanýcý Ekle"."</a><br>";
 						?>
 					</ul>
 				</div>
 			</div>
 		</div>
 	
-<?php include ("includes/footer.php");}?>
+<?php include ("includes/footer.php");?>

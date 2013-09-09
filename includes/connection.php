@@ -1,10 +1,10 @@
 <?php
-	$connection =mysql_connect("localhost","fozel_blog","Fo98@*11");
+	$connection =mysql_connect("localhost","------","------");
 	if(!$connection){
-		die("Veritabanýna Baðlanýlamadý: ".mysql_error());
+		die("Veritabanï¿½na Baï¿½lanï¿½lamadï¿½: ".mysql_error());
 	}
-	$db_select = mysql_select_db("fozel_blog",$connection);
+	$db_select = mysql_select_db("-----",$connection);
 	if(!$db_select){
-		die("Veritabaný Tablo Seçim Hatasý: ".mysql_error());
+		die("Veritabanï¿½ Tablo Seï¿½im Hatasï¿½: ".mysql_error());
 	}
 ?>

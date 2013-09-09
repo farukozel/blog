@@ -100,13 +100,13 @@
 							echo "<table border=1 width=100%>";
 							echo "<tr>";
 								echo "<td align=center>Id</td>";
-								echo "<td>Kategori Adý</td>";   
+								echo "<td>Kategori Adý</td>"; 								
 								echo "<td>Ýþlem</td>";  
 								echo "</tr>";
 							while ($row3 = mysql_fetch_array($sayfa));{
 								echo "<tr>";
 								echo "<td>".$row3["kategori_id"]."</td>";
-								echo "<td>".$row3["kategori_ad"]."</td>";  
+								echo "<td>".$row3["kategori_ad"]."</td>";
 								echo "<td>Düzenle Sil</td>";
 								echo "</tr>";
 							}
@@ -114,15 +114,15 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
 						}elseif($icerik == "makale_ekle"){
 							//Makale Ekleme Sayfasýnýn Oluþturulmasý
-							echo" 	<div class=makale_eklesol>  
-										<div class=makaleadi> Makale Adý </div>
-										<div class=kategoriadi> kategori </div>
-										<div class=icerikadi> Ýçerik </div>
+							?> 	<div class="makale_eklesol">  
+										<div class="makaleadi"> Makale Adý </div>
+										<div class="makaleadi"> Kategori </div>
+										<div class="makaleadi"> Ýçerik </div>
 									</div>
-									<div class=makale_eklesag>
-											<form action=includes/makale_ekle.php id=usrform method=POST>
-												<input class=makaleform1 type=text  name=makale_ad value=MakaleAdýnýGiriniz.. onclick=this.value=''; >";
-														
+									<div class="makale_eklesag">
+											<form action="includes/makale_ekle.php" id="usrform" method="POST">
+												<input class="makaleform1" type="text"  name="makale_ad" value=" Makale Adýný Giriniz..."  onclick="this.value='';" >
+														<?php
 													echo"<select name=kategori_sec class=option>";
 													echo"<option value=Seçiniz.. selected> Seçiniz..</option>";
 														$kategori = mysql_query ("SELECT * FROM kategori",$connection);
@@ -135,7 +135,7 @@
 								echo"					</select>";
 								echo"			</input>";
 								echo"		</form>";
-								echo"		<textarea class=textarea rows=15 cols=73 name=makale_icerik onclick=this.value='' form=usrform> Makale Ýçeriðini Giriniz...</textarea>";
+								echo"		<textarea class=textarea name=makale_icerik onclick=this.value='' form=usrform> Makale Ýçeriðini Giriniz...</textarea>";
 								echo"		<input class=makale_buton type=submit form=usrform value=Kaydet />";
 																				
 								echo "</div>";
@@ -152,22 +152,41 @@
 				<div class="arama">
 				Arama Yap
 				</div>
-				<div class="makale">Yönetim
+				<div class="sagorta">
+					<div class="baslik">Yönetim</div>
 					<ul>
 						<?php 
-							echo "<a href=\"admin.php?a=kullanici\">".Kullanýcýlar."</a><br>";
-							echo "<a href=\"admin.php?a=makale\">".Makaleler."</a><br>";
-							echo "<a href=\"admin.php?a=kategori\">".Kategoriler."</a><br>";
-							echo "<a href=\"admin.php?a=sayfa\">".Sayfalar."</a><br>";
+							echo "<li>";
+							echo "<a href=\"admin.php?a=kullanici\">"."<h3>".Kullanýcýlar."</h3>"."</a>";
+							echo "</li>";
+							echo "<li>";
+							echo "<a href=\"admin.php?a=makale\">"."<h3>".Makaleler."</h3>"."</a>";
+							echo "</li>";
+							echo "<li>";
+							echo "<a href=\"admin.php?a=kategori\">"."<h3>".Kategoriler."</h3>"."</a>";
+							echo "</li>";
+							echo "<li>";
+							echo "<a href=\"admin.php?a=sayfa\">"."<h3>".Sayfalar."</h3>"."</a>";
+							echo "</li>";
+							echo "<li>";
+							echo "<a href=\"admin.php?a=ayar\">"."<h3>".Ayarlar."</h3>"."</a>";
+							echo "</li>";
+							echo "<li>";
+							echo "<a href=\"admin.php?a=cikis\">"."<h3>". Çýkýþ."</h3>"."</a>";
+							echo "</li>";
 						?>
 					</ul>
 				</div>
-				<div class="login">
-				Makaleler 
+				<div class="sagalt">
+				<div class="baslik"> Makaleler </div>
 					<ul>
 						<?php
-							echo "<a href=\"admin.php?a=makale_ekle\">"."Yeni Makale Ekle"."</a><br>";
-							echo "<a href=\"admin.php?a=kullanici_ekle\">"."Yeni Kullanýcý Ekle"."</a><br>";
+							echo "<li>";
+							echo "<a href=\"admin.php?a=makale_ekle\">"."<h3>Yeni Makale Ekle</h3>"."</a><br>";
+							echo "</li>";
+							echo "<li>";
+							echo "<a href=\"admin.php?a=kullanici_ekle\">"."<h3>Yeni Kullanýcý Ekle</h3>"."</a><br>";
+							echo "</li>";
 						?>
 					</ul>
 				</div>

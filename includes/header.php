@@ -5,5 +5,5 @@
 	</head>
 	<body>
 		<div id="header">
-			<h1>Site Adý/Slogan</h1>
+			<h1>Slogan</h1>
 		</div>

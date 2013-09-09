@@ -1,3 +1,7 @@
+<?php 
+session_start(); 
+include ("includes/connection.php");
+?>
 <html>
 	<head>
 		<title>Anasayfa</title>
@@ -5,5 +9,20 @@
 	</head>
 	<body>
 		<div id="header">
-			<h1>Slogan</h1>
+			<div class = "logo"> Logo Alaný </div>
+			<div class = "siteadi"> Site Adý/Slogan </div>
+			
+			<?php 
+			if(isset($_SESSION["giris"])){ //eðer kullanýcý giriþ yapmamýþsa header bölmesinin saðýnda kullanýcý adýný yazmayacak.
+			?>	
+			<div class = "oturum">
+			<?php
+				echo "Kullanýcý adý: "; echo $_SESSION["kullanici"]; 
+			?>
+				</div>
+			<?php
+			}
+			?>
+				
+				
 		</div>

@@ -5,7 +5,43 @@
 	}
 ?>
 <?php include ("includes/connection.php");?>
-<?php $icerik = $_GET["a"];?>
+<?php 
+$icerik = $_GET["a"];
+$kontrol = $_GET["b"];
+	if($kontrol == "kullanici_ekle"){
+		$kullanici_ad = $_POST["kullanici_ad"];
+		$eposta =$_POST["eposta"];
+		$sifre = $_POST["sifre"];
+		$rol = $_POST["rol"];
+		if (($kullanici_ad == "") or ($sifre == "") or ($rol == "")){ //kullanýcý adý, Þifre ve rol alanlarý boþ girilirse hata mesajý yayýnlar
+			echo '<script type="text/javascript">alert("Boþ býraktýðýnýz alanlar var!");</script>';
+			echo '<meta http-equiv="refresh" content="0;URL=http://blog.farukozel.net/admin.php?a=kullanici_ekle">';
+		}else{
+			$kullanici_sonuc = mysql_query("INSERT INTO kullanicilar(user_name,user_mail,user_pass,user_rol) VALUES ('$kullanici_ad','$eposta','$sifre','$rol')",$connection);
+			if(isset($kullanici_sonuc)){
+				header("Location:http://blog.farukozel.net/admin.php?a=kullanici");
+			}else{
+				echo "Bir Hata Oluþtu : ".mysql_error();
+			}
+		}
+	}elseif($kontrol == "makale_ekle"){
+		$gelen_yazar = $_SESSION["kullanici"];
+		$makale_ad = $_POST["makale_ad"];
+		$kategori_sec =$_POST["kategori_sec"];
+		$makale_icerik = $_POST["makale_icerik"];
+		if (($makale_ad == "") or ($kategori_sec == "") or ($makale_icerik == "")){ //kullanýcý adý, Þifre ve rol alanlarý boþ girilirse hata mesajý yayýnlar
+			echo '<script type="text/javascript">alert("Boþ býraktýðýnýz alanlar var!");</script>';
+			echo '<meta http-equiv="refresh" content="0;URL=http://blog.farukozel.net/admin.php?a=makale_ekle">';
+		}else{
+			$makale_sonuc = mysql_query("INSERT INTO makale(makale_ad,makale_icerik,yazar) VALUES ('$makale_ad','$makale_icerik','$gelen_yazar')",$connection);
+			if(isset($makale_sonuc)){
+				header("Location:http://blog.farukozel.net/admin.php?a=makale");
+			}else{
+				echo "Bir Hata Oluþtu : ".mysql_error();
+			}
+		}	
+	}
+?>
 <?php include ("includes/header.php");?>
 		<div id="orta">
 			<div class="leftbar">
@@ -118,9 +154,9 @@
 										<div class="makaleadi"> Makale Adý </div>
 										<div class="makaleadi"> Kategori </div>
 										<div class="makaleadi"> Ýçerik </div>
-									</div>
+								</div>
 									<div class="makale_eklesag">
-											<form action="includes/makale_ekle.php" id="usrform" method="POST">
+											<form action="admin.php?b=makale_ekle" id="usrform" method="POST">
 												<input class="makaleform1" type="text"  name="makale_ad" value=" Makale Adýný Giriniz..."  onclick="this.value='';" >
 														<?php
 													echo"<select name=kategori_sec class=option>";
@@ -142,10 +178,30 @@
 								
 						} elseif($icerik == "hosgeldiniz"){
 							//Karþýlama Ekraný
-							echo "<h1>Hoþgeldiniz</h1>";
-						}	
+							echo "<center>Hoþgeldiniz</center>";
+						}elseif ($icerik == "kullanici_ekle"){
+							//Kullanýcý ekleme sayfasý
+							?>
+								<div class="makale_eklesol">  
+									<div class="makaleadi"> Kullanýcý Adý </div>
+									<div class="makaleadi"> E-Posta </div>
+									<div class="makaleadi"> Þifre </div>
+									<div class="makaleadi"> Rol </div>
+								</div>
+								<div class="makale_eklesag">
+									<form action="admin.php?b=kullanici_ekle" method="POST">
+										<input class="kullaniciform" type="text"  name="kullanici_ad" value=" Kullanýcý Adýný Giriniz..."  onclick="this.value='';" > </input>
+										<input class="kullaniciform" type="email"  name="eposta" value=" E-Posta Adresini Giriniz..."  onclick="this.value='';" > </input>
+										<input class="kullaniciform" type="password"  name="sifre" > </input>
+										<input class="radio" type="radio" name="rol" Value="1" >Yönetici</input>
+										<input class="radio" type="radio" name="rol" Value="2" >Yazar</input>
+										<input class="makale_buton" type="submit" value="Kaydet" />
+									</form>											
+								</div>
+								<?php
+						}
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
-					?>										
+					?>
 				</div>
 			</div>
 			<div class="rightbar">

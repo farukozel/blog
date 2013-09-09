@@ -14,7 +14,7 @@
 				$_SESSION["kullanici"] = $gelen_kullanici;
 				$_SESSION["sifre"] = $gelen_sifre;
 				echo '<script type="text/javascript">alert("Baþarýyla giriþ yaptýnýz! Yönlendirileceksiniz...");</script>';
-				echo '<meta http-equiv="refresh" content="0;URL=http://blog.farukozel.net/admin.php">';
+				echo '<meta http-equiv="refresh" content="0;URL=http://blog.farukozel.net/admin.php?a=hosgeldiniz">';
 			}else{
 				echo '<script type="text/javascript">alert("Kullanýcý adý veya þifreniz yanlýþ!");</script>';
 				echo '<meta http-equiv="refresh" content="0;URL=index.php">';

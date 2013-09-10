@@ -16,6 +16,7 @@ $kontrol = $_GET["b"];
 		break;
 	}
 $icerik = $_GET["a"];
+$id = $_GET["c"];
 include ("includes/header.php"); //header.php sayfasýnýn aktarýlmasý
  
  ?>
@@ -47,6 +48,12 @@ include ("includes/header.php"); //header.php sayfasýnýn aktarýlmasý
 							break;
 							case "hosgeldiniz":
 								include ("includes/karsilama.php");
+							break;
+							case "duzenle":
+								include ("includes/kullanici_duzenle.php");
+							break;
+							case "kullanici_guncelle":
+								include ("includes/kullanici_guncelle.php");
 							break;
 						}
 //---------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -12,6 +12,7 @@
 			echo "<td>Ýþlem</td>";
 		echo "</tr>";
 		while ($row = mysql_fetch_array($kullanici)) {
+		$ID=$row["user_id"];
 		echo "<tr>";
 		//Yönetici - yazar Kontrolü
 			echo "<td>".$row["user_id"]."</td>";
@@ -22,7 +23,8 @@
 			}
 			echo "<td>".$row["user_name"]."</td>";  
 			echo "<td>".$row["user_mail"]."</td>";
-			echo "<td>Düzenle Sil</td>";
+			
+			echo "<td><a href=admin.php?a=duzenle&c=$ID >Düzenle</a> || <a href=admin.php?a=sil&c=$ID >Sil</a></td>";
 		echo "</tr>";
 		}
 	echo "</table>";

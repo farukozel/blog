@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
 	$kullanici_ad = $_POST["kullanici_ad"];
 	$eposta =$_POST["eposta"];
@@ -15,3 +16,4 @@
 		}
 	}
 ?>
+<?php ob_end_flush(); ?>

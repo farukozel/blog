@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
 	session_start();
 	if(!isset($_SESSION["giris"])){
@@ -49,11 +50,17 @@ include ("includes/header.php"); //header.php sayfasýnýn aktarýlmasý
 							case "hosgeldiniz":
 								include ("includes/karsilama.php");
 							break;
-							case "duzenle":
+							case "kullanici_duzenle":
 								include ("includes/kullanici_duzenle.php");
 							break;
 							case "kullanici_guncelle":
 								include ("includes/kullanici_guncelle.php");
+							break;
+							case "kullanici_sil":
+								include ("includes/kullanici_sil.php");
+							break;
+							case "cikis":
+								include ("includes/cikis.php");
 							break;
 						}
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -106,3 +113,4 @@ include ("includes/header.php"); //header.php sayfasýnýn aktarýlmasý
 		</div>
 	
 <?php include ("includes/footer.php");?>
+<?php ob_end_flush(); ?>

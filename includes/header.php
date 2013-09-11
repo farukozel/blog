@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php 
 session_start(); 
 include ("includes/connection.php");
@@ -12,17 +13,18 @@ include ("includes/connection.php");
 			<div class = "logo"> Logo Alaný </div>
 			<div class = "siteadi"> Site Adý/Slogan </div>
 			
-			<?php 
+			<?php
 			if(isset($_SESSION["giris"])){ //eðer kullanýcý giriþ yapmamýþsa header bölmesinin saðýnda kullanýcý adýný yazmayacak.
 			?>	
 			<div class = "oturum">
 			<?php
-				echo "Kullanýcý adý: "; echo $_SESSION["kullanici"]; 
+				echo "Kullanýcý: "; echo $_SESSION["kullanici"]; 
 			?>
 				</div>
 			<?php
 			}
 			?>
 				
-				
+
 		</div>
+<?php ob_end_flush(); ?>

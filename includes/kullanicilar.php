@@ -18,13 +18,15 @@
 			echo "<td>".$row["user_id"]."</td>";
 			if($row["user_rol"]==1){
 				echo "<td >Yönetici</td>";
-			}else{
+			}elseif($row["user_rol"]==2){
 				echo "<td>Yazar</td>";
+			}else{
+				echo "";
 			}
 			echo "<td>".$row["user_name"]."</td>";  
 			echo "<td>".$row["user_mail"]."</td>";
 			
-			echo "<td><a href=admin.php?a=duzenle&c=$ID >Düzenle</a> || <a href=admin.php?a=sil&c=$ID >Sil</a></td>";
+			echo "<td><a href=admin.php?a=kullanici_duzenle&c=$ID >Düzenle</a> || <a href=admin.php?a=kullanici_sil&c=$ID >Sil</a></td>";
 		echo "</tr>";
 		}
 	echo "</table>";

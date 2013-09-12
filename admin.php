@@ -44,6 +44,15 @@ include ("includes/header.php"); //header.php sayfasýnýn aktarýlmasý
 							case "makale_ekle":
 								include ("includes/makale_form.php");
 							break;
+							case "makale_duzenle":
+								include ("includes/makale_duzenle.php");
+							break;
+							case "makale_guncelle":
+								include ("includes/makale_guncelle.php");
+							break;
+							case "makale_sil":
+								include ("includes/makale_sil.php");
+							break;
 							case "kullanici_ekle":
 								include ("includes/kullanici_form.php");
 							break;

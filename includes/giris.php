@@ -10,10 +10,13 @@
 			echo '<meta http-equiv="refresh" content="0;URL=http://blog.farukozel.net/index.php">';
 		}else{
 			$giris = mysql_query ("SELECT * FROM kullanicilar WHERE user_name = '$gelen_kullanici' and user_pass = '$gelen_sifre' and user_rol",$connection);
+			$bilgiler = mysql_fetch_array($giris);
 			if(mysql_num_rows($giris)==1){
 				$_SESSION["giris"] = "true";
 				$_SESSION["kullanici"] = $gelen_kullanici;
 				$_SESSION["sifre"] = $gelen_sifre;
+				$_SESSION["mail"]=$bilgiler["user_mail"];
+				$_SESSION["rol"]=$bilgiler["user_rol"];
 				echo '<script type="text/javascript">alert("Baþarýyla giriþ yaptýnýz! Yönlendirileceksiniz...");</script>';
 				echo '<meta http-equiv="refresh" content="0;URL=http://blog.farukozel.net/admin.php?a=hosgeldiniz">';
 			}else{

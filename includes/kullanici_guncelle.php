@@ -1,5 +1,6 @@
 <?php ob_start(); ?>
 <?php
+if($_SESSION["rol"] == 1){
 	$guncel_kullanici_ad = $_POST["kullanici_ad"];
 	$guncel_eposta =$_POST["eposta"];
 	$guncel_sifre = $_POST["sifre"];
@@ -11,6 +12,6 @@
 		}else{
 			echo "Bir Hata Oluştu : ".mysql_error();
 		}
-
+}
 ?>
 <?php ob_end_flush(); ?>

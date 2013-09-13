@@ -1,3 +1,6 @@
+<?php
+if($_SESSION["rol"] == 1){
+?>
 <div class="makale_eklesol">  
 	<div class="makaleadi"> Kullanýcý Adý </div>
 	<div class="makaleadi"> E-Posta </div>
@@ -14,3 +17,6 @@
 		<input class="makale_buton" type="submit" value="Kaydet" />
 	</form>											
 </div>
+<?php
+}
+?>

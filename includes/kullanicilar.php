@@ -1,4 +1,5 @@
 <?php
+if($_SESSION["rol"] == 1){
 	$kullanici = mysql_query ("SELECT * FROM kullanicilar",$connection);
 	if(!$kullanici){
 		die ("Veritabaný Sorgu Hatasý: ".mysql_error());
@@ -30,4 +31,5 @@
 		echo "</tr>";
 		}
 	echo "</table>";
+	}
 ?>

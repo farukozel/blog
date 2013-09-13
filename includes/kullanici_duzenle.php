@@ -1,4 +1,5 @@
 <?php
+if($_SESSION["rol"] == 1){
 	$kullanici_duzenle = mysql_query("SELECT * FROM kullanicilar WHERE user_id=$id",$connection);
 	while($dongu=mysql_fetch_array($kullanici_duzenle)){
 		$adi=$dongu["user_name"];
@@ -23,4 +24,5 @@
 										<input class=makale_buton type=submit value=Güncelle />
 									</form>											
 								</div>";
+}
 ?>

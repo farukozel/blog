@@ -112,6 +112,7 @@ include ("includes/header.php"); //header.php sayfasýnýn aktarýlmasý
 							echo "<li>";
 							echo "<a href=\"admin.php?a=makale_ekle\">"."<h3>Yeni Makale Ekle</h3>"."</a><br>";
 							echo "</li>";
+							
 							echo "<li>";
 							echo "<a href=\"admin.php?a=kullanici_ekle\">"."<h3>Yeni Kullanýcý Ekle</h3>"."</a><br>";
 							echo "</li>";

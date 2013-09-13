@@ -1,4 +1,5 @@
 <?php
+if($_SESSION["rol"] == 1){
 	//içerik sayfasý sayfalar tablosu
 	$sayfa = mysql_query ("SELECT * FROM sayfalar",$connection);
 	if(!$sayfa){
@@ -18,4 +19,5 @@
 		echo "</tr>";
 	}
 	echo "</table>";
+}
 ?>

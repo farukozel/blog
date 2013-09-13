@@ -1,5 +1,6 @@
 <?php ob_start(); ?>
 <?php
+if($_SESSION["rol"] == 1){
 	$id = $_GET["c"];
 	$kullanici_sil = mysql_query("DELETE FROM `fozel_blog`.`kullanicilar` WHERE `kullanicilar`.`user_id` = $id",$connection);
 	if(isset($kullanici_sil)){
@@ -9,5 +10,6 @@
 			echo "Bir Hata Oluþtu : ".mysql_error();
 		}
 
+}
 ?>
 <?php ob_end_flush(); ?>

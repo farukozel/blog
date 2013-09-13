@@ -1,5 +1,6 @@
 <?php ob_start(); ?>
 <?php
+if($_SESSION["rol"] == 1){
 	$kullanici_ad = $_POST["kullanici_ad"];
 	$eposta =$_POST["eposta"];
 	$sifre = $_POST["sifre"];
@@ -15,5 +16,6 @@
 			echo "Bir Hata Oluþtu : ".mysql_error();
 		}
 	}
+}
 ?>
 <?php ob_end_flush(); ?>
